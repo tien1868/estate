@@ -1,0 +1,15 @@
+{
+  "zip_code": "80229",
+  "radius_miles": 40,
+  "min_profit_multiplier": 2.0,
+  "max_ebay_pages": 3,
+  "max_estate_sales": 50,
+  "max_photos_per_sale": 30,
+  "cache_ttl_hours": 24,
+  "request_delay_seconds": 2.0,
+  "ebay_request_delay_seconds": 3.0,
+  "headless_browser": true,
+  "aws_region": "us-east-1",
+  "bedrock_model_id": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+}

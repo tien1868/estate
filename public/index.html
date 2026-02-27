@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estate Sale Arbitrage Scanner</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;padding:16px;max-width:1200px;margin:0 auto}
+h1{font-size:1.5rem;color:#f8fafc;margin-bottom:4px}
+.subtitle{color:#94a3b8;font-size:.85rem;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.stat{background:#1e293b;border-radius:10px;padding:16px;text-align:center}
+.stat-value{font-size:1.8rem;font-weight:700;color:#22c55e}
+.stat-label{font-size:.75rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+table{width:100%;border-collapse:collapse;background:#1e293b;border-radius:10px;overflow:hidden}
+thead{background:#334155}
+th{padding:12px 14px;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;font-weight:600}
+td{padding:12px 14px;border-top:1px solid #334155;font-size:.9rem}
+.main-row{cursor:pointer;transition:background .15s}
+.main-row:hover{background:#334155}
+.rank{color:#64748b;font-weight:700;width:40px}
+.item-name{font-weight:600;color:#f8fafc}
+.item-type{color:#94a3b8;font-size:.8rem;margin:2px 0 4px}
+.price{font-weight:700;color:#22c55e;font-size:1.05rem;white-space:nowrap}
+.samples{color:#94a3b8;text-align:center}
+a{color:#38bdf8;text-decoration:none}
+a:hover{text-decoration:underline}
+.badge{display:inline-block;padding:2px 8px;border-radius:9999px;font-size:.7rem;font-weight:600;color:#fff}
+.detail{padding:8px 0;color:#cbd5e1;font-size:.85rem;line-height:1.7}
+.detail strong{color:#f8fafc}
+.detail-row td{background:#0f172a;padding:4px 14px 12px 54px}
+.footer{text-align:center;color:#475569;font-size:.75rem;margin-top:20px;padding:10px}
+@media(max-width:640px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  th:nth-child(5),td:nth-child(5){display:none}
+  td{padding:10px 8px;font-size:.82rem}
+  .detail-row td{padding-left:8px}
+}
+</style>
+</head>
+<body>
+<h1>Estate Sale Arbitrage Scanner</h1>
+<p class="subtitle">Scan generated February 26, 2026 at 08:02 PM</p>
+
+<div class="stats">
+  <div class="stat"><div class="stat-value">50</div><div class="stat-label">Sales Scanned</div></div>
+  <div class="stat"><div class="stat-value">42</div><div class="stat-label">With Matches</div></div>
+  <div class="stat"><div class="stat-value" style="color:#d946ef">164</div><div class="stat-label">AI Vision Finds</div></div>
+  <div class="stat"><div class="stat-value">3</div><div class="stat-label">Opportunities</div></div>
+</div>
+
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Item</th>
+  <th>Location</th>
+  <th>eBay Median</th>
+  <th>Samples</th>
+  <th>Sale</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr class="main-row" onclick="toggleDetail(this)">
+            <td class="rank">1</td>
+            <td>
+                <div class="item-name">R.O. Miller</div>
+                <div class="item-type">vintage western saddle</div>
+                <span class="badge" style="background:#d946ef">AI Vision</span>
+            </td>
+            <td>Denver, CO 80229</td>
+            <td class="price">$370.00</td>
+            <td class="samples">56</td>
+            <td><a href="https://www.estatesales.net/CO/Denver/80229/123" target="_blank" rel="noopener">View Sale</a></td>
+        </tr>
+        <tr class="detail-row" style="display:none">
+            <td colspan="6">
+                <div class="detail"><strong>Sale:</strong> Wonderful March Sale!<br><strong>AI Insight:</strong> R.O. Miller Denver Colorado makers mark visible on leather saddle<br><strong>eBay Avg:</strong> $377.87<br><strong>eBay Range:</strong> $8.00 - $1,105.00<br><strong>Samples:</strong> 56 sold listings<br><strong>Estate Price:</strong> Not listed</div>
+            </td>
+        </tr>
+
+        <tr class="main-row" onclick="toggleDetail(this)">
+            <td class="rank">2</td>
+            <td>
+                <div class="item-name">Warner Bros</div>
+                <div class="item-type">vintage Looney Tunes animation cel prints</div>
+                <span class="badge" style="background:#d946ef">AI Vision</span>
+            </td>
+            <td>Aurora, CO 80015</td>
+            <td class="price">$274.25</td>
+            <td class="samples">174</td>
+            <td><a href="https://www.estatesales.net/CO/Aurora/80015/456" target="_blank" rel="noopener">View Sale</a></td>
+        </tr>
+        <tr class="detail-row" style="display:none">
+            <td colspan="6">
+                <div class="detail"><strong>Sale:</strong> Estate Sale Aurora<br><strong>AI Insight:</strong> Framed Warner Bros Looney Tunes prints appear to be animation cels<br><strong>eBay Avg:</strong> $306.77<br><strong>eBay Range:</strong> $4.99 - $1,395.00<br><strong>Samples:</strong> 174 sold listings<br><strong>Estate Price:</strong> Not listed</div>
+            </td>
+        </tr>
+
+        <tr class="main-row" onclick="toggleDetail(this)">
+            <td class="rank">3</td>
+            <td>
+                <div class="item-name">Tiffany &amp; Co</div>
+                <div class="item-type">Sterling silver key pendant</div>
+                <span class="badge" style="background:#d946ef">AI Vision</span>
+            </td>
+            <td>Fort Collins, CO 80528</td>
+            <td class="price">$189.00</td>
+            <td class="samples">175</td>
+            <td><a href="https://www.estatesales.net/CO/FortCollins/80528/789" target="_blank" rel="noopener">View Sale</a></td>
+        </tr>
+        <tr class="detail-row" style="display:none">
+            <td colspan="6">
+                <div class="detail"><strong>Sale:</strong> Fort Collins Moving Sale<br><strong>AI Insight:</strong> Authentic Tiffany blue pouch with key pendant<br><strong>eBay Avg:</strong> $294.89<br><strong>eBay Range:</strong> $5.42 - $2,500.00<br><strong>Samples:</strong> 175 sold listings<br><strong>Estate Price:</strong> $15.00</div>
+            </td>
+        </tr>
+</tbody>
+</table>
+
+<div class="footer">
+  Estate Sale Arbitrage Scanner &mdash; AI-powered scouting with eBay price cross-referencing
+</div>
+
+<script>
+function toggleDetail(row){
+  const detail=row.nextElementSibling;
+  detail.style.display=detail.style.display==='none'?'table-row':'none';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+{
+  "brands": [
+    {
+      "name": "Patagonia",
+      "category": "outdoor_heritage",
+      "search_terms": ["patagonia"],
+      "ebay_search_suffix": "jacket OR fleece OR vest",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "The North Face",
+      "category": "outdoor_heritage",
+      "search_terms": ["north face", "the north face", "TNF"],
+      "ebay_search_suffix": "jacket OR fleece OR puffer",
+      "min_ebay_price": 25
+    },
+    {
+      "name": "Mountain Hardwear",
+      "category": "outdoor_heritage",
+      "search_terms": ["mountain hardwear"],
+      "ebay_search_suffix": "jacket OR fleece",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "LL Bean",
+      "category": "outdoor_heritage",
+      "search_terms": ["ll bean", "l.l. bean", "l.l.bean"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Ralph Lauren",
+      "category": "premium_menswear",
+      "search_terms": ["ralph lauren", "polo ralph", "RLX ralph", "polo rl"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Brooks Brothers",
+      "category": "premium_menswear",
+      "search_terms": ["brooks brothers"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Samuelsohn",
+      "category": "premium_menswear",
+      "search_terms": ["samuelsohn"],
+      "ebay_search_suffix": "suit OR blazer OR sport coat",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Wallace & Barnes",
+      "category": "premium_menswear",
+      "search_terms": ["wallace & barnes", "wallace and barnes", "wallace barnes"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Claude Montana",
+      "category": "designer_contemporary",
+      "search_terms": ["claude montana", "montana paris"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 50
+    },
+    {
+      "name": "Nili Lotan",
+      "category": "designer_contemporary",
+      "search_terms": ["nili lotan"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 40
+    },
+    {
+      "name": "Frank & Eileen",
+      "category": "designer_contemporary",
+      "search_terms": ["frank & eileen", "frank and eileen", "frank eileen"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Maje",
+      "category": "designer_contemporary",
+      "search_terms": ["maje"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 25
+    },
+    {
+      "name": "Eileen Fisher",
+      "category": "designer_contemporary",
+      "search_terms": ["eileen fisher"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Assembly New York",
+      "category": "designer_contemporary",
+      "search_terms": ["assembly new york", "assembly ny"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 25
+    },
+    {
+      "name": "Sou Sou Kyoto",
+      "category": "japanese_artisan",
+      "search_terms": ["sou sou", "sousou", "sou sou kyoto"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 25
+    },
+    {
+      "name": "Mauviel",
+      "category": "specialty",
+      "search_terms": ["mauviel", "mauviel 1830"],
+      "ebay_search_suffix": "copper cookware",
+      "min_ebay_price": 40
+    },
+    {
+      "name": "Qiviut",
+      "category": "specialty",
+      "search_terms": ["qiviut", "qiviuk", "musk ox", "muskox"],
+      "ebay_search_suffix": "sweater OR scarf",
+      "min_ebay_price": 50
+    },
+    {
+      "name": "Vintage Military",
+      "category": "vintage",
+      "search_terms": ["military jacket", "army field jacket", "M-65", "M-51", "military parka", "field jacket"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Vintage Leather",
+      "category": "vintage",
+      "search_terms": ["leather jacket", "leather moto", "leather bomber"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 40
+    },
+    {
+      "name": "Magic: The Gathering",
+      "category": "collectibles",
+      "search_terms": ["magic the gathering", "MTG", "magic cards"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 10
+    },
+    {
+      "name": "Vintage NASCAR",
+      "category": "collectibles",
+      "search_terms": ["nascar", "jeff gordon", "dale earnhardt"],
+      "ebay_search_suffix": "vintage t-shirt OR jacket",
+      "min_ebay_price": 20
+    }
+  ]
+}
