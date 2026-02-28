@@ -307,11 +307,14 @@ async def run(args):
 
     if args.deploy:
         console.print("[bold]Deploying to Vercel...[/bold]")
-        result = subprocess.run(["vercel", "--prod", "--yes"], cwd=".")
-        if result.returncode == 0:
-            console.print("[bold green]Deployed successfully![/bold green]")
-        else:
-            console.print("[red]Vercel deploy failed.[/red]")
+        try:
+            result = subprocess.run(["vercel", "--prod", "--yes"], cwd=".")
+            if result.returncode == 0:
+                console.print("[bold green]Deployed successfully![/bold green]")
+            else:
+                console.print("[red]Vercel deploy failed.[/red]")
+        except FileNotFoundError:
+            console.print("[red]Vercel CLI not found. Install with: npm install -g vercel[/red]")
 
 
 def main():
