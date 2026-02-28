@@ -7,74 +7,111 @@ from ..models.opportunity import ArbitrageOpportunity
 
 logger = logging.getLogger(__name__)
 
-# Keyword-based category classification
+# Keyword-based category classification — uses word-boundary regex to avoid
+# false positives like "pin" matching "camping" or "dress" matching "dresser".
 _CATEGORIES = {
+    "Furniture": [
+        "antique furniture", "mid century", "mid-century", "mcm furniture",
+        "danish modern", "eames", "herman miller", "knoll", "stickley",
+        "credenza", "hutch", "bookcase", "sofa", "couch", "sectional",
+        "recliner", "armoire", "highboy", "lowboy", "buffet", "roll top desk",
+        "secretary desk", "antique dresser", "antique desk", "antique table",
+        "antique cabinet", "dining table", "bedroom set",
+    ],
+    "Tools & Equipment": [
+        "drill", "saw", "welder", "welding", "compressor", "wrench",
+        "tools", "lathe", "grinder", "sander", "router", "winch",
+        "generator", "mower", "chainsaw", "cordless",
+        "snap-on", "snap on", "matco", "craftsman", "power tools",
+    ],
     "Electronics": [
         "tv", "television", "monitor", "console", "xbox", "playstation",
-        "nintendo", "switch", "n64", "camera", "lens", "printer", "computer",
+        "nintendo", "n64", "camera", "lens", "printer", "computer",
         "laptop", "speaker", "stereo", "receiver", "amplifier", "cd player",
         "dvd", "blu-ray", "projector", "radio", "turntable", "record player",
-        "phone", "tablet", "gaming", "headphone", "keyboard",
+        "phone", "tablet", "gaming", "headphone", "keyboard", "electronics",
+    ],
+    "Jewelry & Watches": [
+        "watch", "necklace", "bracelet", "earring", "brooch",
+        "pendant", "sterling silver", "gold jewelry", "diamond", "tiffany",
+        "jewelry", "jewellery", "tie clip", "estate jewelry",
     ],
     "Clothing & Fashion": [
         "jacket", "coat", "blazer", "shirt", "sweater", "vest", "dress",
         "pants", "jeans", "denim", "boots", "shoes", "hat", "scarf",
-        "handbag", "purse", "wallet", "leather", "fur", "mink", "cardigan",
-        "jumpsuit", "coverall", "fleece",
-    ],
-    "Jewelry & Watches": [
-        "watch", "ring", "necklace", "bracelet", "earring", "brooch",
-        "pendant", "sterling", "silver", "gold", "diamond", "tiffany",
-        "jewelry", "jewellery", "chain", "pin", "tie clip",
+        "handbag", "purse", "wallet", "fur", "mink", "cardigan",
+        "jumpsuit", "coverall", "fleece", "patagonia", "north face",
+        "carhartt", "pendleton", "filson", "burberry", "clothing",
     ],
     "Collectibles": [
-        "pokemon", "magic", "mtg", "card", "comic", "star wars", "nascar",
+        "pokemon", "magic", "mtg", "comic", "star wars", "nascar",
         "bobblehead", "figurine", "doll", "barbie", "animation cel",
-        "memorabilia", "autograph", "signed", "coin", "stamp", "toy",
-        "die-cast", "model", "hot wheels", "lego",
+        "memorabilia", "autograph", "coin collection", "stamp",
+        "die-cast", "hot wheels", "lego", "vinyl record", "vinyl records",
     ],
     "Art & Decor": [
-        "painting", "print", "art", "sculpture", "poster", "lithograph",
-        "lamp", "tiffany style", "vase", "stained glass", "frame",
-        "tapestry", "rug", "screen", "mirror",
-    ],
-    "Tools & Equipment": [
-        "drill", "saw", "welder", "welding", "compressor", "wrench",
-        "tool", "lathe", "grinder", "sander", "router", "winch",
-        "generator", "mower", "chainsaw", "impact", "cordless",
+        "painting", "sculpture", "poster", "lithograph",
+        "tiffany style", "vase", "stained glass",
+        "tapestry", "rug", "mirror", "artwork", "oil painting",
     ],
     "Home & Kitchen": [
         "cookware", "dutch oven", "le creuset", "pyrex", "corning",
-        "fiesta", "dish", "bowl", "pot", "pan", "mixer", "blender",
-        "vacuum", "appliance", "washer", "dryer", "refrigerator",
-        "freezer", "furniture", "table", "chair", "cabinet", "desk",
+        "fiestaware", "fiesta ware", "mixer", "blender",
+        "kitchenaid", "kitchen aid", "fiesta", "appliance",
+        "cast iron", "griswold", "copper cookware",
+        "china", "crystal", "waterford", "lenox", "wedgwood", "hummel",
+    ],
+    "Music": [
+        "guitar", "violin", "trumpet", "saxophone", "drum set", "banjo",
+        "mandolin", "accordion", "piano", "fender", "gibson",
+        "musical instrument", "musical instruments",
     ],
     "Sports & Outdoors": [
-        "kayak", "fishing", "rod", "reel", "bike", "bicycle", "golf",
-        "ski", "snowboard", "tent", "camp", "grill", "saddle", "wader",
-        "canteen", "hiking", "boat", "canoe",
+        "kayak", "fishing", "bicycle", "golf",
+        "ski", "snowboard", "tent", "camping", "grill", "saddle",
+        "hiking", "boat", "canoe", "golf clubs", "ski equipment",
     ],
     "Vintage & Antiques": [
         "typewriter", "clock", "antique", "phonograph", "washboard",
-        "crock", "stoneware", "brass", "copper", "pewter", "tin",
-        "advertising", "sewing machine", "register", "orrery",
+        "crock", "stoneware", "brass", "copper", "pewter",
+        "advertising", "sewing machine",
     ],
 }
 
+# Pre-compile word-boundary regex for each keyword
+import re as _re
+_CAT_PATTERNS: dict[str, list[tuple[str, _re.Pattern]]] = {}
+for _cat, _kws in _CATEGORIES.items():
+    _CAT_PATTERNS[_cat] = [
+        (kw, _re.compile(r"\b" + _re.escape(kw) + r"\b", _re.IGNORECASE))
+        for kw in _kws
+    ]
+
 
 def _categorize(opp: ArbitrageOpportunity) -> str:
-    """Assign a category based on item type, brand, and description keywords."""
-    text = " ".join([
+    """Assign a category based on brand/item_type first, then description."""
+    # Prioritize brand and item_type — these are the primary match, not noise
+    primary = " ".join([
         opp.item_type or "",
         opp.matched_brand or "",
+    ])
+
+    for category, patterns in _CAT_PATTERNS.items():
+        for _, pat in patterns:
+            if pat.search(primary):
+                return category
+
+    # Fall back to full description only if brand/item didn't match
+    fallback = " ".join([
         opp.matched_description or "",
         opp.vision_reasoning or "",
-    ]).lower()
+    ])
 
-    for category, keywords in _CATEGORIES.items():
-        for kw in keywords:
-            if kw in text:
+    for category, patterns in _CAT_PATTERNS.items():
+        for _, pat in patterns:
+            if pat.search(fallback):
                 return category
+
     return "Other"
 
 
@@ -134,6 +171,8 @@ def _source_badge(source: str) -> str:
 
 
 _CAT_COLORS = {
+    "Furniture": "#d97706",
+    "Music": "#e879f9",
     "Electronics": "#3b82f6",
     "Clothing & Fashion": "#ec4899",
     "Jewelry & Watches": "#f59e0b",

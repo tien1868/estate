@@ -29,6 +29,34 @@
       "min_ebay_price": 15
     },
     {
+      "name": "Carhartt",
+      "category": "outdoor_heritage",
+      "search_terms": ["carhartt"],
+      "ebay_search_suffix": "vintage jacket OR vest",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Pendleton",
+      "category": "outdoor_heritage",
+      "search_terms": ["pendleton"],
+      "ebay_search_suffix": "wool blanket OR shirt OR jacket",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Filson",
+      "category": "outdoor_heritage",
+      "search_terms": ["filson"],
+      "ebay_search_suffix": "bag OR jacket OR vest",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Columbia",
+      "category": "outdoor_heritage",
+      "search_terms": ["columbia sportswear"],
+      "ebay_search_suffix": "vintage jacket",
+      "min_ebay_price": 15
+    },
+    {
       "name": "Ralph Lauren",
       "category": "premium_menswear",
       "search_terms": ["ralph lauren", "polo ralph", "RLX ralph", "polo rl"],
@@ -54,6 +82,20 @@
       "category": "premium_menswear",
       "search_terms": ["wallace & barnes", "wallace and barnes", "wallace barnes"],
       "ebay_search_suffix": "",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Burberry",
+      "category": "designer_contemporary",
+      "search_terms": ["burberry", "burberrys"],
+      "ebay_search_suffix": "coat OR scarf OR shirt",
+      "min_ebay_price": 40
+    },
+    {
+      "name": "Coach",
+      "category": "designer_contemporary",
+      "search_terms": ["coach leather", "coach bag", "coach purse"],
+      "ebay_search_suffix": "vintage bag OR wallet",
       "min_ebay_price": 20
     },
     {
@@ -113,6 +155,34 @@
       "min_ebay_price": 40
     },
     {
+      "name": "Le Creuset",
+      "category": "specialty",
+      "search_terms": ["le creuset", "lecreuset"],
+      "ebay_search_suffix": "dutch oven OR skillet",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "KitchenAid",
+      "category": "specialty",
+      "search_terms": ["kitchenaid", "kitchen aid"],
+      "ebay_search_suffix": "stand mixer",
+      "min_ebay_price": 40
+    },
+    {
+      "name": "Pyrex",
+      "category": "specialty",
+      "search_terms": ["pyrex"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Fiesta",
+      "category": "specialty",
+      "search_terms": ["fiestaware", "fiesta ware", "fiesta dinnerware"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 10
+    },
+    {
       "name": "Qiviut",
       "category": "specialty",
       "search_terms": ["qiviut", "qiviuk", "musk ox", "muskox"],
@@ -134,6 +204,41 @@
       "min_ebay_price": 40
     },
     {
+      "name": "Mid Century Modern",
+      "category": "furniture",
+      "search_terms": ["mid century", "mid-century", "MCM furniture", "danish modern", "eames", "herman miller", "knoll"],
+      "ebay_search_suffix": "furniture",
+      "min_ebay_price": 50
+    },
+    {
+      "name": "Tiffany",
+      "category": "jewelry",
+      "search_terms": ["tiffany & co", "tiffany and co", "tiffany silver"],
+      "ebay_search_suffix": "sterling silver",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Sterling Silver",
+      "category": "jewelry",
+      "search_terms": ["sterling silver", "925 silver", "silverware set"],
+      "ebay_search_suffix": "flatware OR jewelry",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Snap-on",
+      "category": "tools",
+      "search_terms": ["snap-on", "snap on tools", "snapon"],
+      "ebay_search_suffix": "tool set OR wrench",
+      "min_ebay_price": 25
+    },
+    {
+      "name": "Craftsman",
+      "category": "tools",
+      "search_terms": ["craftsman tools", "craftsman vintage"],
+      "ebay_search_suffix": "vintage tool",
+      "min_ebay_price": 15
+    },
+    {
       "name": "Magic: The Gathering",
       "category": "collectibles",
       "search_terms": ["magic the gathering", "MTG", "magic cards"],
@@ -146,6 +251,146 @@
       "search_terms": ["nascar", "jeff gordon", "dale earnhardt"],
       "ebay_search_suffix": "vintage t-shirt OR jacket",
       "min_ebay_price": 20
+    },
+    {
+      "name": "Pokemon",
+      "category": "collectibles",
+      "search_terms": ["pokemon", "pokémon"],
+      "ebay_search_suffix": "cards vintage",
+      "min_ebay_price": 10
+    },
+    {
+      "name": "LEGO",
+      "category": "collectibles",
+      "search_terms": ["lego", "legos"],
+      "ebay_search_suffix": "set lot",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Vinyl Records",
+      "category": "collectibles",
+      "search_terms": ["vinyl records", "record collection", "vinyl collection", "LP records", "record albums"],
+      "ebay_search_suffix": "lot vintage",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Vintage Typewriter",
+      "category": "vintage",
+      "search_terms": ["typewriter"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Sewing Machine",
+      "category": "vintage",
+      "search_terms": ["singer sewing", "sewing machine"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Fender",
+      "category": "instruments",
+      "search_terms": ["fender guitar", "fender amp", "fender stratocaster", "fender telecaster"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 100
+    },
+    {
+      "name": "Gibson",
+      "category": "instruments",
+      "search_terms": ["gibson guitar", "gibson les paul", "gibson sg"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 100
+    },
+    {
+      "name": "Musical Instruments",
+      "category": "instruments",
+      "search_terms": ["guitar", "violin", "trumpet", "saxophone", "piano keyboard", "drum set", "banjo", "mandolin", "accordion"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Power Tools",
+      "category": "tools",
+      "search_terms": ["power tools", "table saw", "band saw", "drill press", "air compressor", "miter saw", "lathe", "welder", "welding"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Cast Iron",
+      "category": "specialty",
+      "search_terms": ["cast iron", "griswold", "wagner ware"],
+      "ebay_search_suffix": "vintage skillet",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Copper Cookware",
+      "category": "specialty",
+      "search_terms": ["copper cookware", "copper pots", "copper pan"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 25
+    },
+    {
+      "name": "Antique Furniture",
+      "category": "furniture",
+      "search_terms": ["antique desk", "antique dresser", "antique cabinet", "antique table", "antique chair", "roll top desk", "secretary desk"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 50
+    },
+    {
+      "name": "Fishing Gear",
+      "category": "sports",
+      "search_terms": ["fishing rod", "fishing reel", "fly rod", "fly fishing", "tackle box"],
+      "ebay_search_suffix": "vintage",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Golf Equipment",
+      "category": "sports",
+      "search_terms": ["golf clubs", "golf set", "titleist", "callaway", "taylormade", "ping"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 25
+    },
+    {
+      "name": "Camping Gear",
+      "category": "sports",
+      "search_terms": ["camping gear", "tent", "sleeping bag", "coleman", "yeti cooler"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 20
+    },
+    {
+      "name": "Ski Equipment",
+      "category": "sports",
+      "search_terms": ["ski boots", "skis", "snowboard", "ski equipment"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 25
+    },
+    {
+      "name": "Coins & Currency",
+      "category": "collectibles",
+      "search_terms": ["coin collection", "silver coins", "gold coins", "coin set", "silver dollar"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Art & Paintings",
+      "category": "art",
+      "search_terms": ["oil painting", "original art", "signed print", "lithograph", "watercolor painting", "bronze sculpture", "art collection"],
+      "ebay_search_suffix": "original",
+      "min_ebay_price": 30
+    },
+    {
+      "name": "Crystal & China",
+      "category": "specialty",
+      "search_terms": ["waterford crystal", "lenox china", "royal doulton", "wedgwood", "limoges", "noritake", "hummel"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 15
+    },
+    {
+      "name": "Jewelry",
+      "category": "jewelry",
+      "search_terms": ["14k gold", "gold jewelry", "diamond ring", "estate jewelry", "vintage jewelry", "costume jewelry lot"],
+      "ebay_search_suffix": "",
+      "min_ebay_price": 15
     }
   ]
 }

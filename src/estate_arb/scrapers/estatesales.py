@@ -106,6 +106,7 @@ class EstateSalesScraper(BaseScraper):
             if api_data:
                 logger.info(f"Using {len(api_data)} sales from intercepted API data")
                 online_skipped = 0
+                out_of_state = 0
                 for item in api_data:
                     if len(sales) >= max_sales:
                         break
@@ -114,9 +115,15 @@ class EstateSalesScraper(BaseScraper):
                         if sale.is_online:
                             online_skipped += 1
                             continue
+                        # Filter out sales from other states
+                        if state and sale.state and sale.state.upper() != state.upper():
+                            out_of_state += 1
+                            continue
                         sales.append(sale)
                 if online_skipped:
                     logger.info(f"Skipped {online_skipped} online auctions (local sales only)")
+                if out_of_state:
+                    logger.info(f"Skipped {out_of_state} out-of-state sales")
             else:
                 # Strategy 2: parse the rendered DOM
                 logger.info("No API data intercepted, falling back to DOM parsing")
