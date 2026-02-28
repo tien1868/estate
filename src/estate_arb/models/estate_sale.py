@@ -32,3 +32,4 @@ class EstateSale:
     photo_count: int = 0
     matched_items: list[SaleItem] = field(default_factory=list)
     distance_miles: float | None = None
+    is_online: bool = False

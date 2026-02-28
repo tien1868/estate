@@ -314,6 +314,11 @@ a:hover{text-decoration:underline}
 <script>
 let activeCat='all', searchTerm='';
 
+function toggleDetail(row){
+  const detail=row.nextElementSibling;
+  detail.style.display=detail.style.display==='none'?'table-row':'none';
+}
+
 function filterCat(btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');

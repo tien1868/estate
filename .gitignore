@@ -15,3 +15,5 @@ cache/
 node_modules/
 .claude/
 *.log
+
+.vercel

@@ -9,6 +9,12 @@ from ..models.estate_sale import EstateSale
 
 logger = logging.getLogger(__name__)
 
+_ONLINE_PATTERNS = re.compile(
+    r"online\s*auction|virtual\s*sale|online\s*sale|online\s*only|"
+    r"online\s*estate|online\s*bidding|timed\s*online",
+    re.IGNORECASE,
+)
+
 
 class EstateSalesScraper(BaseScraper):
     """Scrapes EstateSales.net for upcoming estate sales near a location.
@@ -54,6 +60,13 @@ class EstateSalesScraper(BaseScraper):
                                 k in first
                                 for k in ("saleId", "id", "title", "name", "address")
                             ):
+                                # Log sale type distribution
+                                if len(body) > 10:
+                                    type_counts: dict[str, int] = {}
+                                    for d in body:
+                                        tn = d.get("typeName", "unknown")
+                                        type_counts[tn] = type_counts.get(tn, 0) + 1
+                                    logger.debug(f"Sale types: {type_counts}")
                                 api_data.extend(body)
                                 logger.info(
                                     f"Intercepted API response with {len(body)} items"
@@ -92,10 +105,18 @@ class EstateSalesScraper(BaseScraper):
             # Strategy 1: use intercepted API data if available
             if api_data:
                 logger.info(f"Using {len(api_data)} sales from intercepted API data")
-                for item in api_data[:max_sales]:
+                online_skipped = 0
+                for item in api_data:
+                    if len(sales) >= max_sales:
+                        break
                     sale = self._parse_api_sale(item)
                     if sale:
+                        if sale.is_online:
+                            online_skipped += 1
+                            continue
                         sales.append(sale)
+                if online_skipped:
+                    logger.info(f"Skipped {online_skipped} online auctions (local sales only)")
             else:
                 # Strategy 2: parse the rendered DOM
                 logger.info("No API data intercepted, falling back to DOM parsing")
@@ -175,6 +196,16 @@ class EstateSalesScraper(BaseScraper):
                 except (ValueError, TypeError):
                     distance = None
 
+            # Detect online/auction sales — we only want local in-person estate sales
+            type_name = str(data.get("typeName", "")).lower()
+            has_auction_url = bool(data.get("auctionUrl"))
+            is_online = (
+                has_auction_url
+                or "online" in type_name
+                or "auction" in type_name
+                or bool(_ONLINE_PATTERNS.search(title))
+            )
+
             return EstateSale(
                 sale_id=sale_id,
                 title=title,
@@ -189,6 +220,7 @@ class EstateSalesScraper(BaseScraper):
                 photo_urls=photo_urls,
                 photo_count=photo_count or len(photo_urls),
                 distance_miles=distance,
+                is_online=is_online,
             )
         except Exception as e:
             logger.debug(f"Failed to parse API sale data: {e}")

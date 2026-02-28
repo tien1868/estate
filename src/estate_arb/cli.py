@@ -97,7 +97,7 @@ async def run(args):
             city=city,
             max_sales=settings.max_estate_sales,
         )
-        console.print(f"  Found [bold]{len(sales)}[/bold] estate sales")
+        console.print(f"  Found [bold]{len(sales)}[/bold] local estate sales [dim](online auctions filtered out)[/dim]")
 
         if not sales:
             console.print("[yellow]No estate sales found. Try a different ZIP or wider area.[/yellow]")
